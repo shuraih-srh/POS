@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let DataInputFields = document.getElementsByClassName(
     "product-data-input-fields"
   );
+  const totalAmount = document.getElementById("toal-amount");
+  const totalQuantity = document.getElementById("toal-quantity");
   const outputTable = document.getElementById("output-table");
   const tablePlaceholderRow = document.getElementById("table-placeHolder-row");
 
@@ -37,7 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (nextElement) {
         nextElement.lastElementChild.focus();
       } else {
-        productDetails.push([...list, (list[1] * list[2])]);
+        let subTotal = list[1] * list[2];
+        productDetails.push([...list, subTotal]);
+        totalAmount.innerText = Number(totalAmount.innerText) + subTotal;
+        totalQuantity.innerText = Number(totalQuantity.innerText) + 1;
         list.length = 0;
         Array.from(DataInputFields).forEach((inputField) => {
           inputField.value = "";
@@ -62,14 +67,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //  Displaying Date & Time
   function displayDateTime() {
-    let dateTime = new Date().toLocaleString().split(",");
+    const date = new Date();
+    const padMethod = (n) => n.toString().padStart(2, "0");
+
+    const yyyy = padMethod(date.getFullYear());
+    const mm = padMethod(date.getMonth() + 1);
+    const dd = padMethod(date.getDate());
+    const HH = padMethod(date.getHours());
+    const MM = padMethod(date.getMinutes());
+    const SS = padMethod(date.getSeconds());
+
     dateOutput.innerHTML = `
     <div>
-      <p>Date: &nbsp;${dateTime[0]}</p>
-      <p>Time:&nbsp;${dateTime[1]}</p>
+      <p>Date: &nbsp;${yyyy}-${mm}-${dd}</p>
+      <p>Time:&nbsp; ${HH}:${MM}:${SS}</p>
     </div>
     `;
   }
+
   displayDateTime();
   setInterval(displayDateTime, 1000);
 });
