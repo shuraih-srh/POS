@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POS</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header">
+        <header>
+          <img
+            id="com-logo"
+            src="Images/android-chrome-192x192.png"
+            alt="Logo"
+          />
+          <div id="com-name">
+            <p id="com-name">GLOMart Groceries Limited.</p>
+            <!-- <p id="com-desc">-Super Market-</p> -->
+          </div>
+        </header>
+        <nav id="nav-bar01">
+          <ul id="nav-items">
+            <li>Products</li>
+            <li>Prices</li>
+            <li>Admin</li>
+          </ul>
+        </nav>
+      </div>
+      <div id="body">
+        <div id="input-area">
+          <div id="product">
+            <label for="p-name">Product:</label>
+            <input
+              type="text"
+              id="p-name"
+              class="product-data-input-fields"
+              name="p-name"
+              placeholder="Enter Product Name"
+            />
+          </div>
+          <div id="qty">
+            <label for="p-qty">Quantity:</label>
+            <input
+              type="text"
+              name="p-qty"
+              id="p-qty"
+              class="product-data-input-fields"
+              placeholder="Enter Quantity"
+              pattern="[0-9]+"
+            />
+          </div>
+          <div id="price">
+            <label for="p-price">Price:</label>
+            <input
+              type="number"
+              name="p-price"
+              id="p-price"
+              class="product-data-input-fields"
+              placeholder="Enter Price"
+            />
+          </div>
+        </div>
+        <div id="print-area">
+          <div id="totalAmount-output">Total: 0</div>
+          <div id="print-area-btns">
+            <button type="button" class="print-area-btn">Print Bill</button>
+            <button type="button" class="print-area-btn">Clear data</button>
+          </div>
+        </div>
+        <div id="date-time"></div>
+      </div>
+      <div id="output-area">
+        <table id="output-table" border="1">
+          <colgroup>
+            <col />
+            <col id="pName-col" />
+          </colgroup>
+          <tr>
+            <th>No.</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Sub Total</th>
+          </tr>
+          <tr id="table-placeHolder-row">
+            <td id="table-placeholder" colspan="5">
+              Entered products will appear here...
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
