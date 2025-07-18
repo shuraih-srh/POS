@@ -28,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     outputTable.appendChild(tRow);
   }
 
-  pName.focus();
-
   function enterButtonAction(event, element, list) {
     const firstField = pName;
     const activeField = element.parentElement;
